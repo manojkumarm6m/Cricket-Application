@@ -1,0 +1,50 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: CARD-SERVICE
+        uri: lb://CARD-SERVICE
+        predicates:
+        - Path=/cards/**
+        
+      - id: FAVORITES-SERVICE
+        uri: lb://FAVORITES-SERVICE
+        predicates:
+        - Path=/fav/**
+
+      - id: LIVESCORE-SERVICE
+        uri: lb://LIVESCORE-SERVICE
+        predicates:
+        - Path=/score/**
+        
+      - id: NEWS-SERVICE
+        uri: lb://NEWS-SERVICE
+        predicates:
+        - Path=/news/**
+        
+      - id: PLAYERSTAT-SERVICE
+        uri: lb://PLAYERSTAT-SERVICE
+        predicates:
+        - Path=/stat/**
+        
+      - id: RECOMMENDATION-SERVICE
+        uri: lb://RECOMMENDATION-SERVICE
+        predicates:
+        - Path=/rec/**
+        
+
+
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
