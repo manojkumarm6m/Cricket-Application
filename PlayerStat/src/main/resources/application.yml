@@ -1,0 +1,15 @@
+server:
+  port: 8666
+
+spring:
+  application:
+    name: PLAYERSTAT-SERVICE
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
